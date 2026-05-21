@@ -1,0 +1,72 @@
+\section{AI Audit Report}
+
+\subsection{Ask AI Tool for ISTQB
+mindmap and correct it}
+
+\subsubsection{Prompt + Tool}
+Prompt: "Create a highly professional, clean, and visually appealing mindmap about ISTQB (International Software Testing Qualifications Board) Certification, in a modern infographic style.
+\vspace{0.1cm}
+
+Central topic in the middle: "ISTQB Software Testing Certification" with the official ISTQB logo style, using deep blue and teal color scheme, modern sans-serif typography.
+\vspace{0.1cm}
+
+Main branches radiating from the center:
+\begin{itemize}
+    \item Fundamentals of Testing
+    \item Testing Throughout the Software Development Lifecycle
+    \item Static Testing
+    \item Test Techniques (Black-box, White-box, Experience-based)
+    \item Test Management
+    \item Test Monitoring and Control
+    \item Test Analysis and Design
+    \item Test Implementation and Execution
+    \item Evaluating Exit Criteria and Reporting
+    \item Configuration Management
+    \item Risk and Testing
+    \item Defect Management
+    \item Tool Support for Testing
+    
+\end{itemize}
+
+Use a clean radial or hierarchical mindmap structure. Each main branch has clear sub-branches with key concepts, important terms, and short descriptions.
+\vspace{0.1cm}
+
+Style: Modern, minimalist, corporate educational infographic, excellent visual hierarchy, balanced layout, subtle shadows and depth, high contrast, professional color palette (dark navy, teal, white, light gray accents), very detailed, sharp text, readable even at medium size, 16:9 landscape orientation, ultra high resolution, clean background with very light grid or subtle tech pattern.
+\vspace{0.1cm}
+
+Add small relevant icons for each section (test tube, checklist, lifecycle diagram, bug icon, etc.). Make it suitable for study materials and certification preparation."
+Tool đã sử dụng: Gemini (model 3.5 thinking)
+Thời gian đã thực hiện: 21:04 20/05/2026
+
+\subsubsection{AI output}
+\begin{center}
+    \includegraphics[scale=0.3]{AI_OUTPUT/AI Output.png}
+\end{center}
+
+\subsubsection{Verdict}
+INVALID
+
+\subsubsection{Reasoning}
+\textbf{Lỗi 1 (Các cấp độ kiểm thử bị gộp chung và sử dụng lại thuật ngữ cũ):} Ở nhánh \textbf{"Testing Throughout the Software Development Lifecycle -> Levels of Testing"}, mindmap nêu lên "Unit" đồng thời cũng quy chiếu "Integration". Ngược lại, theo ISTQB v4.0.1 Ch.2.2.1 (Test Levels, pp. 28-29) và Appendix C (p. 75), cấp độ "Integration testing" cần phải được chia ra thành hai mức độ riêng biệt là \textbf{"Component integration testing"} và \textbf{"System integration testing"}. Bên cạnh đó, cụm từ "unit testing" nay thay thế bởi cụm từ "component testing".
+
+\vspace{0.2cm}
+
+\textbf{Lỗi 2 (Kỹ thuật kiểm thử chứa nội dung đã bị loại bỏ/thay thế):} Trong nhánh \textbf{"Test Techniques -> Specific techniques"}, mindmap hiện vẫn bao gồm các cụm từ "Use Case" và "Statement/Decision coverage". Theo Phụ lục C (Appendix C - Release Notes, trang 75) của tài liệu ISTQB v4.0.1, kỹ thuật \textbf{"Use case testing"} không còn được đề cập trong bất kỳ nội dung nào của cấp độ Foundation. Không chỉ có vậy, tài liệu này còn chỉ rõ rằng khái niệm \textbf{"Decision testing and coverage"} đã được thay thế bằng \textbf{"Branch testing and coverage"} (xem Mục 4.3).
+
+\vspace{0.2cm}
+
+\textbf{Lỗi 3 (Standard Test Process sai các hoạt động cuối):} Trong nhánh \textbf{"Fundamentals of Testing -> Standard test process"}, sơ đồ tư duy hiện liệt kê hai hoạt động cuối cùng là "\textbf{đánh giá tiêu chí kết thúc \& lập báo cáo}" và \textbf{"closure"}. Theo ISTQB v4.0.1 Mục 1.4.1 Hoạt động và nhiệm vụ kiểm thử, trang 18, có bảy hoạt động liên quan đến quy trình kiểm thử hiện tại, kết thúc bằng hoạt động \textbf{"Test completion"}. \textbf{"Evaluating exit criteria \& reporting"}, vốn trước đây là một phần của các phiên bản cũ hơn của phương pháp kiểm thử này, đã được tái cấu trúc và đưa vào mục \textbf{"Test monitoring and test control"} và \textbf{"Test completion"}.
+
+\subsubsection{Student fix}
+\textbf{Sửa lỗi 1:} Đổi tên nhánh \textbf{"Unit"} thành \textbf{"Component testing"}. Xóa nhánh \textbf{"Integration"} và bổ sung hai nhánh phân biệt là \textbf{"Component integration testing"} và \textbf{"System integration testing"}
+
+\vspace{0.2cm}
+
+\textbf{Sửa lỗi 2:} Xóa bỏ hoàn toàn kỹ thuật \textbf{"Use Case"}. Đổi tên kỹ thuật \textbf{"Statement/Decision coverage"} thành \textbf{"Statement/Branch coverage"} để phản ánh đúng thuật ngữ mới.
+
+\vspace{0.2cm}
+
+\textbf{Sửa lỗi 3:} Xóa bỏ hai hoạt động cũ là "\textbf{evaluating exit criteria \& reporting"} và \textbf{"closure"}. Thay thế bằng một node mới duy nhất tên là \textbf{"Test completion"}.
+ 
+
+

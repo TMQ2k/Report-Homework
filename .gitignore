@@ -1,0 +1,21 @@
+# LaTeX build files and auxiliary files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# VS Code workspace files (tùy chọn)
+.vscode/
