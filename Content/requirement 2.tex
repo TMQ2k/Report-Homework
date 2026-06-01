@@ -389,3 +389,324 @@ AI đã nâng mức độ suy đoán thành một chuỗi sự kiện gần như
 
 \textbf{Đính chính sự thật:}
 Bài báo chỉ đưa ra giả thuyết rằng kẻ tấn công \textbf{có thể đã} xâm nhập trước, đánh cắp khóa bí mật và \textbf{có thể} dùng chúng để thực thi mã từ xa, đồng thời nhấn mạnh ConnectWise \textbf{chưa xác nhận} cơ chế này. Do đó, cần giữ mức độ không chắc chắn thay vì khẳng định đó là chuỗi sự kiện chắc chắn.
+\subsection{Lỗ hổng nghiêm trọng trên GoAnywhere MFT (CVE-2025-10035)}
+
+\subsubsection{Đường dẫn bài báo}
+\href{https://www.rapid7.com/blog/post/2025/09/18/etr-critical-unauthenticated-rce-in-fortra-goanywhere-mft/}{Chi tiết vụ việc}
+
+\subsubsection{Mô tả vấn đề}
+Fortra đã phát hành cảnh báo bảo mật cho lỗ hổng CVE-2025-10035, một lỗ hổng thực thi mã từ xa không cần xác thực (Unauthenticated Remote Code Execution) trên GoAnywhere MFT, giải pháp truyền tệp có quản lý cấp doanh nghiệp. Lỗ hổng bắt nguồn từ lỗi giải mã dữ liệu không an toàn (unsafe deserialization) trong thành phần License Response Servlet. Bất kỳ ai có thể truy cập cổng quản trị (mặc định 8000) đều có khả năng khai thác lỗ hổng mà không cần đăng nhập. GoAnywhere MFT từng là mục tiêu của các nhóm ransomware trong quá khứ với lỗ hổng zero-day CVE-2023-0669 vào năm 2023.
+
+\subsubsection{Mức độ nghiêm trọng}
+Vụ việc có mức độ cực kỳ nghiêm trọng (Critical). Lỗ hổng cho phép thực thi mã từ xa mà không cần xác thực, ảnh hưởng đến tất cả phiên bản GoAnywhere MFT trước 7.8.0. Rapid7 xác nhận mã khai thác đã có sẵn công khai tại thời điểm công bố.
+
+\subsubsection{Hậu quả}
+\textbf{Đối với các tổ chức sử dụng GoAnywhere MFT:} Kẻ tấn công không cần xác thực có thể khai thác lỗ hổng để thực thi mã từ xa trên máy chủ thông qua cổng quản trị, dẫn đến nguy cơ chiếm quyền điều khiển hoàn toàn hệ thống. GoAnywhere MFT từng là mục tiêu khai thác zero-day trong quá khứ.
+
+\subsubsection{Giải pháp}
+Theo bài báo, các biện pháp khắc phục bao gồm:
+
+\begin{itemize}
+    \item Nâng cấp ngay GoAnywhere MFT lên phiên bản 7.8.0.
+    \item Hạn chế truy cập đến cổng quản trị (mặc định 8000) chỉ cho các nguồn tin cậy.
+    \item Kiểm tra xem cổng quản trị có bị lộ ra Internet hay không.
+\end{itemize}
+
+\subsubsection{Phát hiện AI Bias / Hallucination}
+\textbf{Prompt đã sử dụng:} \textit{`{https://www.rapid7.com/blog/post/2025/09/18/etr-critical-unauthenticated-rce-in-fortra-goanywhere-mft/} hãy đọc bài báo này và cho tôi biết nội dung chi tiết là gì.''} - \textit{Timestamp: 02/06/2026 00:27}
+
+\textbf{Kết quả trả về của AI:}
+
+\textbf{Điểm ảo giác / thiên vị:}
+AI nêu rằng Fortra đã phát hành cảnh báo bảo mật `vào ngày 18 tháng 9 năm 2025'' cho lỗ hổng này. Tuy nhiên, bài báo không đề cập cụ thể ngày Fortra phát hành cảnh báo bảo mật. Bài báo chỉ ghi nhận rằng Rapid7 công bố bài viết vào ngày 18/09/2025. AI đã tự suy luận rằng ngày Rapid7 đăng bài cũng là ngày Fortra phát hành cảnh báo.
+
+\textbf{Đính chính sự thật:}
+Bài báo ghi nhận bài viết của Rapid7 được đăng vào ngày 18/09/2025, nhưng không nêu rõ ngày cụ thể Fortra phát hành cảnh báo bảo mật. AI đã nhầm lẫn giữa ngày công bố bài viết phân tích với ngày Fortra phát hành cảnh báo chính thức, trong khi đây có thể là hai mốc thời gian khác nhau.
+
+\subsection{Cảnh báo lỗ hổng trên PaperCut cho phép chiếm quyền điều khiển máy chủ}
+
+\subsubsection{Đường dẫn bài báo}
+\href{https://whitehat.vn/threads/canh-bao-lo-hong-tren-papercut-cho-phep-chiem-quyen-dieu-khien-may-chu-da-co-poc.17229/}{Chi tiết vụ việc}
+
+\subsubsection{Mô tả vấn đề}
+PaperCut cho biết những kẻ tấn công đang khai thác các lỗ hổng nghiêm trọng trong PaperCut MF/NG, phần mềm quản lý in có khoảng 100 triệu người dùng từ hơn 70.000 công ty trên toàn thế giới, để cài đặt phần mềm quản trị từ xa Atera, từ đó chiếm quyền điều khiển máy chủ. Hai lỗ hổng đáng chú ý là CVE-2023-27350 (điểm CVSS 9,8) và CVE-2023-27351 (điểm CVSS 8,2), cho phép kẻ tấn công từ xa bỏ qua xác thực và thực thi mã tùy ý trên các máy chủ PaperCut với đặc quyền hệ thống. Các cuộc tấn công có độ phức tạp thấp và không yêu cầu tương tác của người dùng. Công ty Horizon3 đã công bố thông tin kỹ thuật chi tiết và mã khai thác PoC cho lỗ hổng CVE-2023-27350. CISA đã bổ sung lỗ hổng này vào danh sách các lỗ hổng đang bị khai thác. Theo bài báo, chiến dịch khai thác có liên quan đến băng đảng ransomware Clop thông qua phần mềm độc hại TrueBot.
+
+\subsubsection{Mức độ nghiêm trọng}
+Vụ việc có mức độ nghiêm trọng rất cao. Lỗ hổng CVE-2023-27350 có điểm CVSS 9,8, cho phép thực thi mã từ xa với đặc quyền hệ thống mà không cần xác thực. Theo bài báo, hơn 1.687 máy chủ PaperCut tiếp xúc với Internet có thể bị nhắm mục tiêu. Các dấu hiệu khai thác còn liên quan đến băng đảng ransomware Clop, cho thấy nguy cơ bị mã hóa dữ liệu và tống tiền.
+
+\subsubsection{Hậu quả}
+\textbf{Đối với các tổ chức sử dụng PaperCut:} Kẻ tấn công đã khai thác lỗ hổng để thực thi các lệnh PowerShell cài đặt phần mềm quản lý từ xa Atera và Syncro. Việc tấn công vào PaperCut có thể cho phép kẻ tấn công tiếp cận và tấn công vào mạng của nạn nhân, triển khai mã hóa dữ liệu và tống tiền.
+
+\subsubsection{Giải pháp}
+Theo bài báo, các biện pháp khắc phục bao gồm:
+
+\begin{itemize}
+    \item Cả hai lỗ hổng CVE-2023-27350 và CVE-2023-27351 đã được vá trong PaperCut MF và PaperCut NG phiên bản 20.1.7, 21.2.11 và 22.0.9 trở lên.
+    \item Cập nhật các bản vá mới nhất ngay lập tức.
+    \item Phân quyền truy cập sử dụng PaperCut, đồng thời hạn chế việc public dịch vụ này ra Internet. Trường hợp nhân viên cần sử dụng máy in từ xa, quản trị viên cần thiết lập VPN riêng.
+    \item Rà soát định kỳ Application log của PaperCut.
+    \item Quản trị viên chưa kịp cập nhật bản vá có thể chặn tất cả lưu lượng truy cập đến cổng quản lý web (cổng mặc định 9191) từ các địa chỉ IP bên ngoài trên thiết bị biên, cũng như chặn lưu lượng đến cổng đó trên tường lửa của máy chủ.
+\end{itemize}
+
+\subsubsection{Phát hiện AI Bias / Hallucination}
+\textbf{Prompt đã sử dụng:} \textit{`{https://whitehat.vn/threads/canh-bao-lo-hong-tren-papercut-cho-phep-chiem-quyen-dieu-khien-may-chu-da-co-poc.17229/} hãy đọc bài báo này và cho tôi biết những gì đã xảy ra trong vụ lỗ hổng nghiêm trọng trên PaperCut.''} - \textit{Timestamp: 02/06/2026 01:09}
+
+\textbf{Kết quả trả về của AI:}
+
+\textbf{Điểm ảo giác / thiên vị:}
+AI khẳng định rằng việc chiếm quyền PaperCut `chỉ là bước đệm'' để tin tặc `tiến hành mã hóa toàn bộ dữ liệu của tổ chức nhằm mục đích tống tiền'', trình bày như một kết luận chắc chắn. Tuy nhiên, bài báo nêu rõ rằng mục đích cuối cùng của chiến dịch khai thác là không rõ ràng.
+
+\textbf{Đính chính sự thật:}
+Bài báo ghi nhận rằng `dù không rõ mục đích cuối cùng của những hoạt động khai thác nhắm vào phần mềm PaperCut là gì'' và chỉ đưa ra khả năng việc tấn công `có thể cho phép'' kẻ tấn công triển khai mã hóa dữ liệu và tống tiền. AI đã loại bỏ hoàn toàn sự không chắc chắn mà bài báo gốc đã nhấn mạnh, biến một giả thuyết chưa xác nhận thành kết luận chắc chắn.
+
+\subsection{Chuỗi khai thác mới trong Microsoft Exchange (OWASSRF)}
+
+\subsubsection{Đường dẫn bài báo}
+\href{https://vjst.vn/chuoi-khai-thac-moi-trong-microsoft-exchange-55285.html}{Chi tiết vụ việc}
+
+\subsubsection{Mô tả vấn đề}
+Những kẻ tấn công sử dụng phần mềm tống tiền đang sử dụng một chuỗi khai thác mới khai thác lỗ hổng ProxyNotShell (CVE-2022-41082) để thực thi mã từ xa trên các máy chủ Microsoft Exchange. Chuỗi khai thác ban đầu sử dụng lỗ hổng CVE-2022-41040 (SSRF trên điểm cuối Autodiscover), nhưng chuỗi mới này lợi dụng lỗ hổng CVE-2022-41080 để leo thang đặc quyền thông qua Outlook Web Access (OWA). Các nhà nghiên cứu CrowdStrike đặt tên chuỗi khai thác là OWASSRF và cho biết chỉ có thể ngăn chặn bằng cách cập nhật các bản vá mà Microsoft đã phát hành vào tháng 11/2022. Việc giảm thiểu bằng cách viết lại URL cho ProxyNotShell mà Microsoft đã chia sẻ trước đó là không có hiệu quả đối với chuỗi khai thác mới này.
+
+\subsubsection{Mức độ nghiêm trọng}
+Vụ việc có mức độ nghiêm trọng cao. Chuỗi khai thác cho phép thực thi mã từ xa trên các máy chủ Microsoft Exchange, và được sử dụng bởi nhóm ransomware Play trong các cuộc xâm nhập thực tế. Các biện pháp giảm thiểu tạm thời trước đó của Microsoft không có hiệu quả đối với chuỗi khai thác mới.
+
+\subsubsection{Hậu quả}
+\textbf{Đối với các tổ chức sử dụng Microsoft Exchange:} Sau khi truy nhập lần đầu thông qua phương pháp khai thác mới, tác nhân đe dọa đã tận dụng những tệp thực thi Plink và AnyDesk hợp pháp để duy trì quyền truy nhập và thực hiện các kỹ thuật chống điều tra kỹ thuật số (anti-forensics) trên máy chủ Microsoft Exchange nhằm che giấu hoạt động.
+
+\subsubsection{Giải pháp}
+Theo bài báo, các biện pháp khắc phục bao gồm:
+
+\begin{itemize}
+    \item Cập nhật bản vá KB5019758 mà Microsoft đã phát hành vào tháng 11/2022.
+    \item Không áp dụng biện pháp viết lại URL cho ProxyNotShell vì không có hiệu quả đối với chuỗi khai thác mới này.
+\end{itemize}
+
+\subsubsection{Phát hiện AI Bias / Hallucination}
+\textbf{Prompt đã sử dụng:} \textit{`{https://vjst.vn/chuoi-khai-thac-moi-trong-microsoft-exchange-55285.html} hãy đọc bài báo này và cho tôi biết những gì đã xảy ra trong vụ chuỗi khai thác mới trong Microsoft Exchange.''} - \textit{Timestamp: 02/06/2026 01:20}
+
+\textbf{Kết quả trả về của AI:}
+
+\textbf{Điểm ảo giác / thiên vị:}
+AI viết rằng tin tặc `không dùng mã độc phức tạp'' mà tận dụng các phần mềm hợp pháp như Plink và AnyDesk. Tuy nhiên, bài báo không hề đề cập đến việc kẻ tấn công không sử dụng mã độc phức tạp. Đây là thông tin do AI tự thêm vào.
+
+\textbf{Đính chính sự thật:}
+Bài báo chỉ nêu rằng tác nhân đe dọa đã tận dụng những tệp thực thi Plink và AnyDesk hợp pháp để duy trì quyền truy nhập, mà không đưa ra bất kỳ nhận định nào về những công cụ mà kẻ tấn công không sử dụng. AI đã tự tạo sự tương phản bằng cách thêm chi tiết `không dùng mã độc phức tạp'' để làm nổi bật việc dùng phần mềm hợp pháp, trong khi bài báo gốc chỉ đơn thuần liệt kê các công cụ được sử dụng.
+
+\subsection{Apple vá hai lỗ hổng đã bị lợi dụng thực tế trên iPhone}
+
+\subsubsection{Đường dẫn bài báo}
+\href{https://vnexpress.net/apple-va-hai-lo-hong-da-bi-loi-dung-thuc-te-tren-iphone-4999426.html}{Chi tiết vụ việc}
+
+\subsubsection{Mô tả vấn đề}
+Apple phát hành bản cập nhật bảo mật khẩn cấp nhằm vá hai lỗ hổng liên quan đến WebKit, công cụ đứng sau trình duyệt Safari chạy trên hầu hết sản phẩm của Apple như iOS, iPadOS, macOS. Hai lỗ hổng có tên mã CVE-2025-43529 và CVE-2025-14174. Trong một số trường hợp, chỉ cần truy cập vào một website độc hại là đủ để kích hoạt một cuộc tấn công. CVE-2025-43529 là lỗ hổng sử dụng bộ nhớ sau khi giải phóng (use-after-free) trong WebKit, có thể kích hoạt thực thi mã tùy ý khi thiết bị xử lý nội dung web độc hại, được nhóm phân tích mối đe dọa Threat Analysis của Google phát hiện. CVE-2025-14174 liên quan đến bộ nhớ WebKit, tác động nhẹ hơn nhưng theo Apple có thể kết hợp với các lỗ hổng khác để làm suy yếu hoàn toàn thiết bị. Apple xác nhận việc khai thác trái phép đang diễn ra trên thực tế, gồm những cuộc tấn công cực kỳ tinh vi nhắm vào các cá nhân cụ thể.
+
+\subsubsection{Mức độ nghiêm trọng}
+Vụ việc có mức độ nghiêm trọng cao. Apple xác nhận cả hai lỗ hổng đang bị khai thác trên thực tế trong những cuộc tấn công cực kỳ tinh vi nhắm vào các cá nhân cụ thể. Lỗ hổng CVE-2025-43529 cho phép thực thi mã tùy ý trên thiết bị chỉ bằng cách đánh lừa trình duyệt xử lý sai bộ nhớ.
+
+\subsubsection{Hậu quả}
+\textbf{Đối với người dùng thiết bị Apple:} Kẻ tấn công có thể chạy dòng lệnh của riêng chúng trên thiết bị bằng cách đánh lừa trình duyệt xử lý sai bộ nhớ. Lỗ hổng CVE-2025-14174 dù tác động nhẹ hơn nhưng có thể kết hợp với các lỗ hổng khác để làm suy yếu hoàn toàn thiết bị. Apple không mô tả chi tiết những nạn nhân đã bị tấn công.
+
+\subsubsection{Giải pháp}
+Theo bài báo, các biện pháp khắc phục bao gồm:
+
+\begin{itemize}
+    \item Apple đã khắc phục lỗi bằng cách tinh chỉnh, cải thiện khả năng quản lý bộ nhớ của WebKit và kiểm tra xác thực tốt hơn.
+    \item Bản vá được triển khai trên tất cả phiên bản mới nhất của iOS, iPadOS, macOS, Safari, watchOS, tvOS và visionOS.
+    \item Apple khuyến cáo người dùng nên cập nhật ngay để tránh các mối đe dọa.
+\end{itemize}
+
+\subsubsection{Phát hiện AI Bias / Hallucination}
+
+\textbf{Điểm ảo giác / thiên vị:}
+AI gán nhãn hai lỗ hổng là `Zero-day'' khi viết `hai lỗ hổng bảo mật (Zero-day)''. Tuy nhiên, bài báo không hề sử dụng thuật ngữ `Zero-day'' ở bất kỳ đâu trong nội dung. Đây là thuật ngữ do AI tự thêm vào.
+
+\textbf{Đính chính sự thật:}
+Bài báo chỉ mô tả hai lỗ hổng là `đã bị lợi dụng thực tế'' và Apple xác nhận `việc khai thác trái phép đang diễn ra trên thực tế'', mà không sử dụng thuật ngữ phân loại kỹ thuật `Zero-day''. AI đã tự gán nhãn phân loại này cho hai lỗ hổng, thêm thông tin không có cơ sở trong bài báo gốc.
+
+\subsection{Lỗ hổng trong Microsoft Outlook cho phép đánh cắp thông tin đăng nhập}
+
+\subsubsection{Đường dẫn bài báo}
+\href{https://whitehat.vn/threads/canh-bao-lo-hong-trong-microsoft-outlook-cho-phep-danh-cap-thong-tin-dang-nhap.17844/}{Chi tiết vụ việc}
+
+\subsubsection{Mô tả vấn đề}
+Một lỗ hổng nghiêm trọng CVE-2024-21413 (điểm CVSS 9,8/10) tồn tại trong Microsoft Outlook cho phép thực thi mã từ xa (RCE) khi người dùng mở email có kèm liên kết độc hại. PoC của lỗ hổng đã được phát hành công khai trên GitHub. Lỗ hổng có tên MonikerLink, lợi dụng cách Outlook xử lý các hyperlink, cho phép kẻ tấn công qua mặt chế độ xem được bảo vệ (Protected View). Các sản phẩm bị ảnh hưởng bao gồm Microsoft Office LTSC 2021, Microsoft 365 Apps dành cho doanh nghiệp, Microsoft Outlook 2016 và Microsoft Office 2019. Theo đánh giá của bài báo, lỗ hổng rất nguy hiểm vì có thể bị khai thác với sự tương tác tối thiểu của người dùng, chỉ cần xem trước email trong phần xem trước (preview pane) là đủ để kích hoạt lỗi.
+
+\subsubsection{Mức độ nghiêm trọng}
+Vụ việc có mức độ nghiêm trọng rất cao với điểm CVSS 9,8/10. Lỗ hổng ảnh hưởng đến nhiều người dùng và có thể bị khai thác chỉ bằng việc xem trước email trong preview pane. Tuy nhiên, bài báo cũng lưu ý rằng để có được các thông tin nhạy cảm của người dùng (NTLM), hacker phải crack được hàm băm chứa thông tin đăng nhập khiến khả năng khai thác sẽ khó hơn.
+
+\subsubsection{Hậu quả}
+\textbf{Đối với người dùng Microsoft Outlook:} Kẻ tấn công gửi email có hyperlink `file://'' được tạo đặc biệt, khiến người dùng bị kết nối đến máy chủ của kẻ tấn công qua giao thức SMB và gửi đi các xác thực NTLM có chứa thông tin đăng nhập nhạy cảm. Kẻ tấn công còn lợi dụng Component Object Model (COM) của Windows để chạy mã độc, giúp chúng có thêm quyền kiểm soát hệ thống của nạn nhân.
+
+\subsubsection{Giải pháp}
+Theo bài báo, các biện pháp khắc phục bao gồm:
+
+\begin{itemize}
+    \item Cẩn trọng trước các email lạ.
+    \item Thiết lập mật khẩu mạnh cho tài khoản Outlook.
+    \item Nhanh chóng cập nhật bản vá cho CVE-2024-21413.
+\end{itemize}
+
+\subsubsection{Phát hiện AI Bias / Hallucination}
+
+\textbf{Điểm ảo giác / thiên vị:}
+AI viết rằng `người dùng không nhất thiết phải bấm vào link hay tải tệp tin về máy''. Tuy nhiên, bài báo không hề đề cập đến hành động `tải tệp tin về máy''. Đây là chi tiết do AI tự thêm vào để tạo sự so sánh.
+
+\textbf{Đính chính sự thật:}
+Bài báo chỉ nêu rằng lỗ hổng có thể bị khai thác với `sự tương tác tối thiểu của người dùng'' và `chỉ cần xem trước email trong phần xem trước (preview pane) là đủ để kích hoạt lỗi'', mà không đưa ra bất kỳ so sánh nào với hành động tải tệp tin. AI đã tự bổ sung thông tin không có trong bài báo gốc nhằm nhấn mạnh mức độ nguy hiểm.
+
+\subsection{Atlassian vá lỗ hổng nghiêm trọng trong Confluence Server và Data Center}
+
+\subsubsection{Đường dẫn bài báo}
+\href{https://whitehat.vn/threads/atlassian-va-lo-hong-nghiem-trong-trong-confluence-server-va-confluence-data-center.16741/}{Chi tiết vụ việc}
+
+\subsubsection{Mô tả vấn đề}
+Atlassian vừa phát hành bản vá khắc phục lỗ hổng an ninh nghiêm trọng CVE-2022-26138 liên quan đến việc sử dụng thông tin xác thực được hardcode, ảnh hưởng đến ứng dụng Questions For Confluence dành cho Confluence Server và Confluence Data Center. Khi ứng dụng Questions For Confluence được kích hoạt, hệ thống tự tạo tài khoản Confluence với tên người dùng `disabledsystemuser'' có mật khẩu hardcode cho phép xem và chỉnh sửa tất cả các trang trong Confluence theo mặc định. Kẻ tấn công từ xa không cần xác thực có thể khai thác lỗ hổng này để đăng nhập vào Confluence và truy cập bất kỳ trang nào mà nhóm người dùng Confluence có quyền truy cập. Ngoài ra, Atlassian còn vá 2 lỗ hổng CVE-2022-26136 và CVE-2022-26137 ảnh hưởng đến nhiều sản phẩm khác, cho phép vượt qua các cơ chế xác thực, thực thi mã JavaScript tùy ý và tác động đến cơ chế CORS.
+
+\subsubsection{Mức độ nghiêm trọng}
+Vụ việc có mức độ nghiêm trọng cao. Mật khẩu được hardcode trong mã nguồn cho phép bất kỳ kẻ tấn công nào cũng có thể tải xuống các phiên bản ứng dụng bị ảnh hưởng và xem mật khẩu. Tuy nhiên, bài báo cũng lưu ý rằng chưa có bằng chứng nào cho thấy lỗ hổng bị khai thác trong thực tế.
+
+\subsubsection{Hậu quả}
+\textbf{Đối với các tổ chức sử dụng Confluence:} Kẻ tấn công có thể đăng nhập vào Confluence bằng tài khoản có mật khẩu hardcode và truy cập bất kỳ trang nào mà nhóm người dùng có quyền truy cập, bao gồm xem và chỉnh sửa tất cả các trang. Lỗ hổng ảnh hưởng đến các phiên bản Questions for Confluence 2.7.34, 2.7.35 và 3.0.2.
+
+\subsubsection{Giải pháp}
+Theo bài báo, các biện pháp khắc phục bao gồm:
+
+\begin{itemize}
+    \item Atlassian đã phát hành phiên bản 2.7.38 và 3.0.5 để vá lỗ hổng.
+    \item Người dùng cũng có thể khắc phục bằng cách vô hiệu hóa tài khoản disabledsystemuser.
+    \item Kiểm tra thời gian xác thực cuối cùng cho tài khoản disabledsystemuser để phát hiện dấu vết khai thác. Nếu thời gian xác thực cuối cùng là rỗng, lỗ hổng chưa bị khai thác.
+    \item Cập nhật phiên bản mới và triển khai các biện pháp bảo vệ phù hợp.
+\end{itemize}
+
+\subsubsection{Phát hiện AI Bias / Hallucination}
+\textbf{Prompt đã sử dụng:} \textit{`{https://whitehat.vn/threads/atlassian-va-lo-hong-nghiem-trong-trong-confluence-server-va-confluence-data-center.16741/} hãy đọc bài báo này và cho tôi biết những gì đã xảy ra trong vụ lỗ hổng nghiêm trọng trên Confluence Server và Data Center.'} - \textit{Timestamp: 02/06/2026 02:00}
+
+\textbf{Kết quả trả về của AI:}
+Dựa vào bài báo trên trang WhiteHat mà bạn đã cung cấp, vụ việc liên quan đến lỗ hổng bảo mật nghiêm trọng trên hệ thống Confluence Server và Confluence Data Center của Atlassian được tóm tắt như sau:
+
+**1. Chi tiết về lỗ hổng chính (CVE-2022-26138)**
+
+* **Nguyên nhân:** Lỗ hổng này phát sinh từ việc sử dụng thông tin xác thực (tài khoản/mật khẩu) được cài cắm sẵn (hardcode) bên trong ứng dụng mở rộng có tên là **Questions For Confluence**.
+* **Cách thức hoạt động:** Khi ứng dụng này được kích hoạt trên hệ thống Confluence, nó sẽ tự động sinh ra một tài khoản quản trị có tên đăng nhập là `"disabledsystemuser"`. Mục đích ban đầu của Atlassian khi tạo tài khoản này là để hỗ trợ việc chuyển đổi dữ liệu từ máy chủ nội bộ (Server) lên nền tảng đám mây (Cloud).
+* **Mức độ nguy hiểm:** Tài khoản `"disabledsystemuser"` sở hữu một mật khẩu cố định (hardcoded) và mặc định có đặc quyền **xem và chỉnh sửa tất cả các trang dữ liệu** trên Confluence. Kẻ tấn công (hacker) chỉ cần tải xuống ứng dụng này, trích xuất mật khẩu cố định đó là có thể đăng nhập từ xa vào hệ thống của các doanh nghiệp mà không cần qua bất kỳ bước xác thực hợp lệ nào.
+
+**2. Phạm vi ảnh hưởng và Cách khắc phục**
+
+* **Phiên bản bị lỗi:** Lỗ hổng tồn tại trên các phiên bản Questions for Confluence 2.7.34, 2.7.35 và 3.0.2.
+* **Giải pháp (Bản vá):** Atlassian đã phát hành các phiên bản an toàn là 2.7.38 và 3.0.5 để khắc phục triệt để.
+* **Cách xử lý tạm thời:** Nếu chưa kịp cập nhật, quản trị viên có thể tự khắc phục bằng cách vô hiệu hóa (disable) ngay tài khoản `"disabledsystemuser"`.
+* **Cách kiểm tra hệ thống bị xâm nhập hay chưa:** Quản trị viên có thể kiểm tra lịch sử đăng nhập (thời gian xác thực cuối cùng) của tài khoản `"disabledsystemuser"`. Nếu dữ liệu này trống rỗng, nghĩa là hacker chưa hề sử dụng tài khoản này để xâm nhập. (Tại thời điểm đăng bài, chưa có ghi nhận về việc lỗ hổng này bị khai thác trong thực tế).
+
+**3. Các lỗ hổng nghiêm trọng khác được vá cùng đợt**
+Bên cạnh lỗi trên, Atlassian cũng thông báo vá thêm 2 lỗ hổng nghiêm trọng khác có mã định danh là **CVE-2022-26136** và **CVE-2022-26137**.
+
+* Các lỗ hổng này không chỉ ảnh hưởng tới Confluence mà còn lây lan sang hàng loạt các sản phẩm khác thuộc hệ sinh thái Atlassian (như Bamboo, Bitbucket, Jira, Crowd...).
+* Khai thác thành công, kẻ tấn công từ xa có thể qua mặt cơ chế xác thực, thực thi mã JavaScript độc hại và can thiệp vào cơ chế bảo mật CORS (cross-origin resource sharing) thông qua các truy vấn HTTP tùy túng.
+
+**Kết luận:** Bài báo là lời cảnh báo khẩn cấp từ Atlassian và cộng đồng bảo mật, yêu cầu các doanh nghiệp đang sử dụng Confluence và các công cụ liên quan phải lập tức cập nhật hệ thống hoặc triển khai các biện pháp đóng tài khoản hệ thống bị lỗi để tránh nguy cơ rò rỉ toàn bộ dữ liệu nội bộ.
+
+\textbf{Điểm ảo giác / thiên vị:}
+
+\textbf{Điểm ảo giác / thiên vị:}
+AI viết rằng doanh nghiệp cần cập nhật hệ thống `để tránh nguy cơ rò rỉ toàn bộ dữ liệu nội bộ''. Tuy nhiên, bài báo không hề sử dụng cụm từ `rò rỉ toàn bộ dữ liệu nội bộ''. Đây là mức độ hậu quả do AI tự suy diễn và nâng lên.
+
+\textbf{Đính chính sự thật:}
+Bài báo chỉ nêu khuyến cáo của Atlassian là `cập nhật phiên bản mới và triển khai các biện pháp bảo vệ phù hợp để tránh bị hacker tấn công'', và mô tả tài khoản hardcode có quyền `xem và chỉnh sửa tất cả các trang trong Confluence''. AI đã tự thêm hậu quả `rò rỉ toàn bộ dữ liệu nội bộ'' vượt quá những gì bài báo thực tế mô tả.
+
+\subsection{Lỗ hổng Follina (CVE-2022-30190) trong Microsoft Windows}
+
+\subsubsection{Đường dẫn bài báo}
+\href{https://www.hackthebox.com/blog/cve-2022-30190-follina-explained}{Chi tiết vụ việc}
+
+\subsubsection{Mô tả vấn đề}
+Vào cuối tháng 5 năm 2022, lỗ hổng CVE-2022-30190 (Follina) được phát hiện, đây là lỗ hổng thực thi mã từ xa (RCE) nằm trong công cụ Microsoft Windows Support Diagnostic Tool (MSDT). Lỗ hổng bắt nguồn từ cách MSDT xử lý các URI không đúng định dạng (malformed URIs). Cơ chế tấn công phổ biến nhất là thông qua tài liệu Microsoft Word: tài liệu sử dụng tính năng remote template để tải một file HTML từ máy chủ web do kẻ tấn công kiểm soát, sau đó file HTML này dùng JavaScript để gọi URI ms-msdt nhằm thực thi các lệnh PowerShell tùy ý. Lỗ hổng cho phép vượt qua cả chế độ Protected Mode của Office và các cài đặt macro. Một số định dạng như .rtf có thể kích hoạt khai thác chỉ bằng cách xem trước (preview) mà không cần mở file. Lỗ hổng đã bị khai thác trong thực tế trước khi Microsoft phát hành bản vá đầy đủ vào ngày 14 tháng 6.
+
+\subsubsection{Mức độ nghiêm trọng}
+Vụ việc có mức độ nghiêm trọng cao. Lỗ hổng đã bị khai thác trong thực tế (exploited in the wild) trước khi có bản vá. Microsoft chỉ đưa ra hướng dẫn giảm thiểu vào ngày 30 tháng 5, nhưng bản vá đầy đủ không được phát hành cho đến ngày 14 tháng 6. Lỗ hổng ảnh hưởng đến nhiều phiên bản Windows bao gồm Windows Server 2022/2019/2016/2012/2008, Windows 11/10/8.1 và Windows 7 Service Pack 1. Khai thác hoạt động độc lập với cài đặt macro và vượt qua được Protected Mode.
+
+\subsubsection{Hậu quả}
+\textbf{Đối với người dùng Windows:} Kẻ tấn công có thể thực thi mã tùy ý với quyền của người dùng mở tài liệu Word độc hại. Điều này có thể dẫn đến việc thao túng, đánh cắp hoặc phá hủy thông tin quan trọng thông qua thực thi mã từ xa. Đã có module Metasploit công khai cho lỗ hổng này, và tại thời điểm viết bài chỉ có rất ít công cụ antivirus phát hiện được hoạt động khai thác.
+
+\subsubsection{Giải pháp}
+Theo bài báo, các biện pháp khắc phục bao gồm:
+
+\begin{itemize}
+    \item Áp dụng bản vá chính thức từ Microsoft cho CVE-2022-30190.
+    \item Áp dụng workaround do Microsoft cung cấp nếu chưa kịp cập nhật bản vá.
+    \item Vô hiệu hóa giao thức MSDT URL bằng cách xóa registry key HKEY\_CLASSES\_ROOT\textbackslash ms-msdt.
+    \item Sử dụng các công cụ phát hiện hành vi và phòng chống khai thác.
+\end{itemize}
+
+\subsubsection{Phát hiện AI Bias / Hallucination}
+\textbf{Prompt đã sử dụng:} \textit{`{https://www.hackthebox.com/blog/cve-2022-30190-follina-explained} hãy đọc bài báo này và cho tôi biết những gì đã xảy ra trong vụ lỗ hổng Follina (CVE-2022-30190) trong Microsoft Windows.'} - \textit{Timestamp: 02/06/2026 02:10}
+
+\textbf{Kết quả trả về của AI:}
+Dựa trên bài viết từ Hack The Box, dưới đây là tóm tắt chi tiết về những gì đã xảy ra trong vụ lỗ hổng **Follina (CVE-2022-30190)** trên Microsoft Windows:
+
+### 1. Tổng quan về lỗ hổng Follina
+
+Được phát hiện vào cuối tháng 5 năm 2022, **Follina** là một lỗ hổng **Thực thi mã từ xa (Remote Code Execution - RCE)** cực kỳ nghiêm trọng. Lỗ hổng này nằm trong **MSDT** (Microsoft Windows Support Diagnostic Tool - Công cụ chẩn đoán hỗ trợ của Windows), một tính năng tích hợp sẵn trên hệ điều hành Windows dùng để phát hiện và sửa lỗi hệ thống.
+
+### 2. Nguyên nhân và Cách thức hoạt động
+
+Lỗ hổng bắt nguồn từ việc file thực thi `msdt.exe` xử lý các đường dẫn URI không đúng cách (cụ thể là các URI có độ dài bất thường và kết thúc bằng ký tự `!`). Kẻ tấn công đã lợi dụng điểm yếu này để đánh lừa công cụ chẩn đoán mở ra "cửa hậu", cho phép chúng thực thi các lệnh độc hại.
+
+Phương thức tấn công phổ biến nhất là thông qua một **tài liệu Microsoft Word**. Quá trình khai thác diễn ra theo các bước sau:
+
+* **Bước 1: Chế tạo tài liệu độc hại.** Kẻ tấn công không nhúng trực tiếp mã độc vào file Word vì URI quá dài. Thay vào đó, chúng can thiệp vào cấu trúc XML của file Word (cụ thể là file `document.xml.rels`), chèn một thẻ `Relationship` chứa đường dẫn trỏ tới một máy chủ từ xa.
+* **Bước 2: Tải Payload.** Khi nạn nhân mở tài liệu Word, tài liệu sẽ tự động tải xuống một file HTML từ máy chủ của kẻ tấn công. Điểm nguy hiểm là thủ đoạn này **bỏ qua hoàn toàn các lớp bảo vệ** của Office như Protected Mode hay các cảnh báo về Macro.
+* **Bước 3: Thực thi mã qua giao thức ms-msdt.** File HTML chứa mã JavaScript sẽ kích hoạt giao thức `ms-msdt`. Giao thức này gọi công cụ MSDT và lợi dụng một tham số có tên là `IT_BrowseForFile` để tiêm các dòng lệnh PowerShell độc hại vào hệ thống.
+* **Bước 4: Kiểm soát hệ thống.** Các lệnh PowerShell này sau đó được thực thi (thường là chạy file `mpsigstub.exe`) với quyền của chính người dùng đang mở file Word.
+
+### 3. Mức độ nguy hiểm
+
+* **Dễ dàng bị kích hoạt:** Nạn nhân không cần phải thao tác gì phức tạp ngoài việc mở file Word. Thậm chí, với định dạng file `.rtf`, mã độc có thể tự động chạy chỉ bằng cách người dùng nhấp vào xem trước (Preview Pane) trong Windows Explorer.
+* **Tàng hình:** Tại thời điểm bị phát hiện, rất ít các phần mềm diệt virus có thể nhận diện được chuỗi tấn công này.
+* **Hậu quả:** Kẻ tấn công có thể lấy cắp dữ liệu, thay đổi cấu hình, cài đặt thêm mã độc, leo thang đặc quyền hoặc tấn công lây lan sang các máy tính khác trong cùng mạng.
+
+### 4. Cách khắc phục và Phòng chống
+
+Bài viết đưa ra các hướng dẫn để ngăn chặn lỗ hổng này:
+
+1. **Cập nhật bản vá của Microsoft:** Microsoft đã phát hành bản vá chính thức vào ngày 14/06/2022. Đây là lớp phòng thủ tốt nhất.
+2. **Vô hiệu hóa giao thức URL MSDT (Giải pháp thay thế):** Nếu hệ thống chưa thể cập nhật bản vá, quản trị viên có thể vô hiệu hóa giao thức này bằng cách xóa khóa Registry `HKEY_CLASSES_ROOT\ms-msdt` (cần sao lưu Registry trước khi thực hiện).
+3. **Sử dụng phần mềm bảo mật nâng cao:** Trang bị các công cụ phân tích hành vi và chống khai thác (Exploit Prevention) để kịp thời ngăn chặn các tiến trình đáng ngờ được sinh ra từ Microsoft Office.
+
+\textbf{Điểm ảo giác / thiên vị:}
+AI trình bày `leo thang đặc quyền hoặc tấn công lây lan sang các máy tính khác trong cùng mạng' như hậu quả trực tiếp của lỗ hổng Follina. Tuy nhiên, bài báo nêu rõ đây chỉ là khả năng xảy ra `nếu kết hợp với các lỗ hổng khác'' (if coupled with other vulnerabilities). AI đã loại bỏ điều kiện quan trọng này.
+
+\textbf{Đính chính sự thật:}
+Bài báo viết rằng việc khai thác Follina `có thể là nền tảng cho việc leo thang đặc quyền hoặc di chuyển ngang nếu kết hợp với các lỗ hổng khác'' (could be a foundation for additional privilege escalation or lateral movement if coupled with other vulnerabilities). AI đã biến một khả năng có điều kiện thành hậu quả trực tiếp, khiến mức độ nguy hiểm của riêng lỗ hổng Follina bị phóng đại so với mô tả trong bài báo gốc.
+
+
+\subsection{Lỗ hổng nghiêm trọng trong Cisco IOS XE WLC cho phép truy cập root từ xa}
+
+\subsubsection{Đường dẫn bài báo}
+\href{https://whitehat.vn/threads/lo-hong-nghiem-trong-trong-cisco-ios-xe-wlc-cho-phep-truy-cap-root-tu-xa.18329/}{Chi tiết vụ việc}
+
+\subsubsection{Mô tả vấn đề}
+Lỗ hổng bảo mật nghiêm trọng CVE-2025-20188 với điểm CVSS 10 ảnh hưởng đến các thiết bị Cisco Wireless LAN Controller (WLC) chạy hệ điều hành IOS XE, cho phép tin tặc tấn công từ xa không cần xác thực có thể tải lên tệp tùy ý và thực thi mã độc với quyền root trên thiết bị. Nguyên nhân chính là do tồn tại một JSON Web Token (JWT) được mã hóa cứng trong firmware, vốn được sử dụng để xác thực tính năng Out-of-Band AP Image Download. Tính năng này không được bật theo mặc định, nhưng nếu được bật, kẻ tấn công chỉ cần gửi yêu cầu HTTPS đến thiết bị kèm theo JWT hardcoded để khai thác. Các sản phẩm bị ảnh hưởng bao gồm Bộ điều khiển mạng không dây Catalyst 9800-CL dành cho Cloud, Catalyst 9800 nhúng cho các dòng switch Catalyst 9300/9400/9500, dòng Catalyst 9800 Series và Catalyst APs.
+
+\subsubsection{Mức độ nghiêm trọng}
+Vụ việc có mức độ nghiêm trọng tối đa với điểm CVSS 10/10. Kẻ tấn công có thể tải tệp, thực hiện tấn công vượt qua đường dẫn (path traversal) và thực thi lệnh tùy ý với đặc quyền root. Tuy nhiên, bài báo lưu ý rằng hiện chưa ghi nhận việc khai thác trong thực tế và tính năng bị ảnh hưởng không được bật theo mặc định.
+
+\subsubsection{Hậu quả}
+\textbf{Đối với các tổ chức sử dụng thiết bị Cisco WLC:} Nếu khai thác thành công, kẻ tấn công có thể tải tệp tùy ý, thực hiện tấn công vượt qua đường dẫn (path traversal) và thực thi lệnh tùy ý với đặc quyền root trên thiết bị, dẫn đến nguy cơ chiếm quyền kiểm soát hoàn toàn bộ điều khiển mạng không dây.
+
+\subsubsection{Giải pháp}
+Theo bài báo, hiện chưa có cách khắc phục tạm thời. Cisco khuyến cáo người dùng:
+
+\begin{itemize}
+    \item Update phần mềm mới nhất để giảm thiểu rủi ro.
+    \item Tắt tính năng `Out-of-Band AP Image Download''.
+    \item Hạn chế truy cập đến giao diện quản trị và dịch vụ HTTPS chỉ cho phép IP quản trị hoặc mạng nội bộ.
+    \item Giám sát và kiểm tra hệ thống log WLC, đặt cảnh báo hành vi ghi tệp hoặc thực thi lệnh bất thường.
+\end{itemize}
+
+\subsubsection{Phát hiện AI Bias / Hallucination}
+\textbf{Prompt đã sử dụng:} \textit{`{https://whitehat.vn/threads/lo-hong-nghiem-trong-trong-cisco-ios-xe-wlc-cho-phep-truy-cap-root-tu-xa.18329/} hãy đọc bài báo này và cho tôi biết những gì đã xảy ra trong vụ lỗ hổng nghiêm trọng trên Cisco IOS XE WLC.'} - \textit{Timestamp: 02/06/2026 02:20}
+\textbf{Điểm ảo giác / thiên vị:}
+AI viết rằng `chưa có bản vá khắc phục triệt để'' cho lỗ hổng này. Tuy nhiên, bài báo nêu rõ rằng `chưa có cách khắc phục tạm thời'' và khuyến cáo `update phần mềm mới nhất'', ngụ ý đã có bản cập nhật chính thức. AI đã đảo ngược ý nghĩa của bài báo.
+
+\textbf{Đính chính sự thật:}
+Bài báo ghi nhận rằng `chưa có cách khắc phục tạm thời'' (không có workaround), đồng thời khuyến cáo người dùng `update phần mềm mới nhất để giảm thiểu rủi ro'', cho thấy đã có bản vá phần mềm. AI đã thay đổi từ `chưa có cách khắc phục tạm thời'' thành `chưa có bản vá khắc phục triệt để'', đảo ngược hoàn toàn thông tin trong bài báo gốc.
