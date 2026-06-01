@@ -643,11 +643,11 @@ Theo bài báo, các biện pháp khắc phục bao gồm:
 \textbf{Kết quả trả về của AI:}
 Dựa trên bài viết từ Hack The Box, dưới đây là tóm tắt chi tiết về những gì đã xảy ra trong vụ lỗ hổng **Follina (CVE-2022-30190)** trên Microsoft Windows:
 
-### 1. Tổng quan về lỗ hổng Follina
+1. Tổng quan về lỗ hổng Follina
 
 Được phát hiện vào cuối tháng 5 năm 2022, **Follina** là một lỗ hổng **Thực thi mã từ xa (Remote Code Execution - RCE)** cực kỳ nghiêm trọng. Lỗ hổng này nằm trong **MSDT** (Microsoft Windows Support Diagnostic Tool - Công cụ chẩn đoán hỗ trợ của Windows), một tính năng tích hợp sẵn trên hệ điều hành Windows dùng để phát hiện và sửa lỗi hệ thống.
 
-### 2. Nguyên nhân và Cách thức hoạt động
+2. Nguyên nhân và Cách thức hoạt động
 
 Lỗ hổng bắt nguồn từ việc file thực thi `msdt.exe` xử lý các đường dẫn URI không đúng cách (cụ thể là các URI có độ dài bất thường và kết thúc bằng ký tự `!`). Kẻ tấn công đã lợi dụng điểm yếu này để đánh lừa công cụ chẩn đoán mở ra "cửa hậu", cho phép chúng thực thi các lệnh độc hại.
 
@@ -655,21 +655,21 @@ Phương thức tấn công phổ biến nhất là thông qua một **tài li�
 
 * **Bước 1: Chế tạo tài liệu độc hại.** Kẻ tấn công không nhúng trực tiếp mã độc vào file Word vì URI quá dài. Thay vào đó, chúng can thiệp vào cấu trúc XML của file Word (cụ thể là file `document.xml.rels`), chèn một thẻ `Relationship` chứa đường dẫn trỏ tới một máy chủ từ xa.
 * **Bước 2: Tải Payload.** Khi nạn nhân mở tài liệu Word, tài liệu sẽ tự động tải xuống một file HTML từ máy chủ của kẻ tấn công. Điểm nguy hiểm là thủ đoạn này **bỏ qua hoàn toàn các lớp bảo vệ** của Office như Protected Mode hay các cảnh báo về Macro.
-* **Bước 3: Thực thi mã qua giao thức ms-msdt.** File HTML chứa mã JavaScript sẽ kích hoạt giao thức `ms-msdt`. Giao thức này gọi công cụ MSDT và lợi dụng một tham số có tên là `IT_BrowseForFile` để tiêm các dòng lệnh PowerShell độc hại vào hệ thống.
+* **Bước 3: Thực thi mã qua giao thức ms-msdt.** File HTML chứa mã JavaScript sẽ kích hoạt giao thức \texttt{ms-msdt}. Giao thức này gọi công cụ MSDT và lợi dụng một tham số có tên là \texttt{IT\_BrowseForFile} để tiêm các dòng lệnh PowerShell độc hại vào hệ thống.
 * **Bước 4: Kiểm soát hệ thống.** Các lệnh PowerShell này sau đó được thực thi (thường là chạy file `mpsigstub.exe`) với quyền của chính người dùng đang mở file Word.
 
-### 3. Mức độ nguy hiểm
+3. Mức độ nguy hiểm
 
 * **Dễ dàng bị kích hoạt:** Nạn nhân không cần phải thao tác gì phức tạp ngoài việc mở file Word. Thậm chí, với định dạng file `.rtf`, mã độc có thể tự động chạy chỉ bằng cách người dùng nhấp vào xem trước (Preview Pane) trong Windows Explorer.
 * **Tàng hình:** Tại thời điểm bị phát hiện, rất ít các phần mềm diệt virus có thể nhận diện được chuỗi tấn công này.
 * **Hậu quả:** Kẻ tấn công có thể lấy cắp dữ liệu, thay đổi cấu hình, cài đặt thêm mã độc, leo thang đặc quyền hoặc tấn công lây lan sang các máy tính khác trong cùng mạng.
 
-### 4. Cách khắc phục và Phòng chống
+4. Cách khắc phục và Phòng chống
 
 Bài viết đưa ra các hướng dẫn để ngăn chặn lỗ hổng này:
 
 1. **Cập nhật bản vá của Microsoft:** Microsoft đã phát hành bản vá chính thức vào ngày 14/06/2022. Đây là lớp phòng thủ tốt nhất.
-2. **Vô hiệu hóa giao thức URL MSDT (Giải pháp thay thế):** Nếu hệ thống chưa thể cập nhật bản vá, quản trị viên có thể vô hiệu hóa giao thức này bằng cách xóa khóa Registry `HKEY_CLASSES_ROOT\ms-msdt` (cần sao lưu Registry trước khi thực hiện).
+2. **Vô hiệu hóa giao thức URL MSDT (Giải pháp thay thế):** Nếu hệ thống chưa thể cập nhật bản vá, quản trị viên có thể vô hiệu hóa giao thức này bằng cách xóa khóa Registry \texttt{HKEY\_CLASSES\_ROOT\textbackslash ms-msdt} (cần sao lưu Registry trước khi thực hiện).
 3. **Sử dụng phần mềm bảo mật nâng cao:** Trang bị các công cụ phân tích hành vi và chống khai thác (Exploit Prevention) để kịp thời ngăn chặn các tiến trình đáng ngờ được sinh ra từ Microsoft Office.
 
 \textbf{Điểm ảo giác / thiên vị:}
