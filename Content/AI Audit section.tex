@@ -35,9 +35,8 @@ Style: Modern, minimalist, corporate educational infographic, excellent visual h
 \vspace{0.1cm}
 
 Add small relevant icons for each section (test tube, checklist, lifecycle diagram, bug icon, etc.). Make it suitable for study materials and certification preparation."
-Tool đã sử dụng: Gemini (model 3.5 thinking)
 
-Thời gian đã thực hiện: 21:04 20/05/2026
+\textbf{Thời gian đã thực hiện}: 21:04 20/05/2026
 
 \subsubsection{AI output}
 \begin{center}
@@ -88,7 +87,7 @@ Dưới đây là danh sách đầy đủ và hoàn chỉnh 20 lỗi phần mề
 Loại: AI/LLM (Tấn công tiêm nhập lệnh - Prompt Injection)
 
 NGUỒN / LINK THAM KHẢO:
-→ BleepingComputer — ChatGPT DAN jailbreak bypasses OpenAI's guardrails — 2023
+→ BleepingComputer — ChatGPT DAN jailbreak bypasses OpenAI"s guardrails — 2023
 
 MÔ TẢ LỖI:
 Lỗ hổng xảy ra trên mô hình ngôn ngữ lớn của OpenAI (ChatGPT). Người dùng sử dụng kỹ thuật đóng vai (role-play), yêu cầu AI giả lập một thực thể tên là DAN (Do Anything Now) không bị ràng buộc bởi các quy tắc an toàn cốt lõi. Nguyên nhân kỹ thuật là do LLM thiếu cơ chế phân tách rõ ràng giữa "hướng dẫn hệ thống" (system prompt) và "đầu vào của người dùng", khiến AI lầm tưởng các lệnh độc hại là quy tắc mới cần tuân thủ và bỏ qua các rào cản an toàn ban đầu.
@@ -108,7 +107,7 @@ OpenAI liên tục vá lỗi bằng cách huấn luyện tăng cường dựa tr
 Loại: AI/LLM (Thiên kiến/Phân biệt - Bias)
 
 NGUỒN / LINK THAM KHẢO:
-→ The Verge — Google apologizes for 'missing the mark' with Gemini image generation — 2024
+→ The Verge — Google apologizes for "missing the mark" with Gemini image generation — 2024
 
 MÔ TẢ LỖI:
 Lỗi xuất hiện trong tính năng tạo hình ảnh từ văn bản của Google Gemini. Do hệ thống bị tinh chỉnh (fine-tuned) quá mức nhằm đảm bảo tính đa dạng (diversity) về sắc tộc và giới tính, bộ lọc ngầm của Gemini đã tự động chèn thêm các từ khóa về sự đa dạng sắc tộc vào prompt gốc của người dùng. Khi nhận lệnh tạo ảnh về các nhân vật lịch sử (như lính Đức thế chiến II hay quốc phụ Mỹ), đầu ra của mô hình trở nên sai lệch hoàn toàn so với thực tế lịch sử.
@@ -193,7 +192,7 @@ NGUỒN / LINK THAM KHẢO:
 → CrowdStrike — Post Incident Review (PIR) — 2024
 
 MÔ TẢ LỖI:
-Lỗi xuất phát từ bản cập nhật tệp tin cấu hình (Channel File 291) của phần mềm bảo mật CrowdStrike Falcon Sensor trên hệ điều hành Windows. Trình điều khiển kernel `csagent.sys` đã không thể xử lý đúng định dạng của tệp cấu hình mới này, tạo ra một lỗi đọc bộ nhớ ngoài giới hạn (out-of-bounds memory read) ở cấp độ sâu nhất của hệ thống. Lỗi này trực tiếp khiến hệ điều hành sụp đổ (Blue Screen of Death - BSOD).
+Lỗi xuất phát từ bản cập nhật tệp tin cấu hình (Channel File 291) của phần mềm bảo mật CrowdStrike Falcon Sensor trên hệ điều hành Windows. Trình điều khiển kernel "csagent.sys" đã không thể xử lý đúng định dạng của tệp cấu hình mới này, tạo ra một lỗi đọc bộ nhớ ngoài giới hạn (out-of-bounds memory read) ở cấp độ sâu nhất của hệ thống. Lỗi này trực tiếp khiến hệ điều hành sụp đổ (Blue Screen of Death - BSOD).
 
 MỨC ĐỘ NGHIÊM TRỌNG:
 Nghiêm trọng (Sập hệ thống hạ tầng toàn cầu)
@@ -202,7 +201,7 @@ HẬU QUẢ / TÁC ĐỘNG THỰC TẾ:
 Khoảng 8,5 triệu máy tính và máy chủ Windows trên toàn thế giới bị tê liệt cục bộ. Sự cố dẫn đến việc hàng ngàn chuyến bay bị hủy, các đài truyền hình phải ngừng phát sóng, hệ thống thanh toán ngân hàng và dịch vụ bệnh viện bị gián đoạn. Thiệt hại kinh tế ước tính lên tới hàng tỷ USD.
 
 GIẢI PHÁP / CÁCH KHẮC PHỤC:
-CrowdStrike nhanh chóng rút lại bản cập nhật lỗi. Người dùng phải khởi động máy tính vào chế độ an toàn (Safe Mode) và xóa thủ công tệp tin `.sys` bị lỗi để khôi phục máy. Về lâu dài, CrowdStrike phải cam kết sửa đổi quy trình kiểm thử và phát hành (staged rollout) để không đẩy bản cập nhật tới toàn cầu cùng một lúc.
+CrowdStrike nhanh chóng rút lại bản cập nhật lỗi. Người dùng phải khởi động máy tính vào chế độ an toàn (Safe Mode) và xóa thủ công tệp tin ".sys" bị lỗi để khôi phục máy. Về lâu dài, CrowdStrike phải cam kết sửa đổi quy trình kiểm thử và phát hành (staged rollout) để không đẩy bản cập nhật tới toàn cầu cùng một lúc.
 
 ---
 
@@ -333,7 +332,7 @@ NGUỒN / LINK THAM KHẢO:
 → NVD — CVE-2022-30190 Detail — 2022
 
 MÔ TẢ LỖI:
-Lỗi nằm trong công cụ Microsoft Support Diagnostic Tool (MSDT) của Windows. Khi một tài liệu Word độc hại chứa liên kết OLE được mở (hoặc chỉ cần xem trước trong File Explorer), lỗi này lạm dụng giao thức URL `ms-msdt://` để bỏ qua mọi cảnh báo an toàn, trực tiếp tải xuống và thực thi một tập lệnh PowerShell từ xa mà không cần quyền quản trị.
+Lỗi nằm trong công cụ Microsoft Support Diagnostic Tool (MSDT) của Windows. Khi một tài liệu Word độc hại chứa liên kết OLE được mở (hoặc chỉ cần xem trước trong File Explorer), lỗi này lạm dụng giao thức URL "ms-msdt://" để bỏ qua mọi cảnh báo an toàn, trực tiếp tải xuống và thực thi một tập lệnh PowerShell từ xa mà không cần quyền quản trị.
 
 MỨC ĐỘ NGHIÊM TRỌNG:
 Cao (CVSS 7.8)
@@ -362,7 +361,7 @@ HẬU QUẢ / TÁC ĐỘNG THỰC TẾ:
 Nhiều nhóm hacker do nhà nước bảo trợ đã lập tức khai thác lỗ hổng này để cài đặt phần mềm tống tiền và tiếp cận không gian làm việc nội bộ của các tập đoàn, đánh cắp tài sản trí tuệ và dữ liệu chiến lược của doanh nghiệp.
 
 GIẢI PHÁP / CÁCH KHẮC PHỤC:
-Atlassian khẩn cấp tung bản cập nhật phần mềm và yêu cầu khách hàng cài đặt ngay. Giải pháp ứng phó tức thời là cấu hình tường lửa để chặn mọi truy cập từ bên ngoài hướng vào các đường dẫn bắt buộc có chứa từ khóa `/setup/` trên máy chủ.
+Atlassian khẩn cấp tung bản cập nhật phần mềm và yêu cầu khách hàng cài đặt ngay. Giải pháp ứng phó tức thời là cấu hình tường lửa để chặn mọi truy cập từ bên ngoài hướng vào các đường dẫn bắt buộc có chứa từ khóa "/setup/" trên máy chủ.
 
 ---
 
@@ -483,3 +482,127 @@ Lỗ hổng này đe dọa trực tiếp đến tính toàn vẹn của mã ngu�
 
 GIẢI PHÁP / CÁCH KHẮC PHỤC:
 GitHub lập tức tung bản vá lỗi khẩn cấp cho tất cả các phiên bản hệ thống Enterprise Server bị ảnh hưởng. Người dùng là các doanh nghiệp tự vận hành máy chủ mã nguồn buộc phải áp dụng bản cập nhật ngay lập tức để duy trì sự an toàn của tài sản trí tuệ.
+
+\subsubsection{Verdict}
+INVALID
+
+\subsubsection{Reasoning}
+
+Khi so sánh kết quả AI tạo ra với 20 defect đã được nghiên cứu và trình bày tại Yêu cầu 2, nhóm phát hiện các sai sót sau:
+
+\vspace{0.2cm}
+
+\textbf{Lỗi 1 (Sai mã CVE và thông tin lỗ hổng):} AI cung cấp mã CVE khác hoàn toàn so với lỗ hổng thực tế được trình bày trong bài báo tham khảo, dẫn đến sai lệch toàn bộ mô tả kỹ thuật, điểm CVSS, cơ chế tấn công và giải pháp khắc phục. Cụ thể:
+
+\begin{itemize}
+    \item Defect 7 (ConnectWise): AI nêu \textbf{CVE-2024-1709} (CVSS 10.0), thực tế là \textbf{CVE-2025-3935} (insecure deserialization).
+    \item Defect 8 (GoAnywhere MFT): AI nêu \textbf{CVE-2023-0669} (CVSS 7.2), thực tế là \textbf{CVE-2025-10035} (unsafe deserialization, bản vá đúng là 7.8.0 chứ không phải 7.1.2).
+    \item Defect 11 (Apple WebKit): AI nêu \textbf{CVE-2023-28205} (một lỗ hổng), thực tế là \textbf{CVE-2025-43529} và \textbf{CVE-2025-14174} (hai lỗ hổng riêng biệt).
+    \item Defect 12 (Microsoft Outlook): AI nêu \textbf{CVE-2023-23397} (NTLM qua Reminder), thực tế là \textbf{CVE-2024-21413} (MonikerLink qua hyperlink "file://").
+    \item Defect 14 (Atlassian Confluence): AI nêu \textbf{CVE-2023-22515} (CVSS 10.0), thực tế là \textbf{CVE-2022-26138} (hardcoded password cho tài khoản "disabledsystemuser").
+    \item Defect 15 (Cisco IOS XE): AI nêu \textbf{CVE-2023-20198} (Web UI bypass), thực tế là \textbf{CVE-2025-20188} (JWT hardcoded trên WLC).
+    \item Defect 16 (Fortinet): AI nêu \textbf{CVE-2022-42475}, thực tế là \textbf{CVE-2023-27997} (CVSS 9,8).
+    \item Defect 17 (Ivanti Connect Secure): AI nêu \textbf{CVE-2023-46805} (CVSS 8.2), thực tế là \textbf{CVE-2025-22457} (stack-based buffer overflow).
+    \item Defect 20 (GitHub Enterprise): AI nêu \textbf{CVE-2024-4985} (CVSS 10.0), thực tế là \textbf{CVE-2025-23369} (CVSS 7,6).
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Lỗi 2 (Sai sự kiện hoặc chuỗi khai thác):} AI trình bày sai sự kiện cốt lõi hoặc nhầm lẫn giữa các cuộc tấn công khác nhau:
+
+\begin{itemize}
+    \item Defect 1: AI mô tả kỹ thuật jailbreak là \textbf{"DAN (Do Anything Now)"} (role-play, 2023), trong khi sự kiện thực tế là phương pháp \textbf{"Time Bandit"} của David Kuszmar, khai thác \textbf{"nhầm lẫn về thời gian" (temporal confusion)} của mô hình đây hai sự kiện hoàn toàn khác nhau.
+    \item Defect 10: AI mô tả chuỗi khai thác \textbf{ProxyNotShell} (CVE-2022-41040), trong khi bài báo trình bày chuỗi khai thác \textbf{mới} tên \textbf{OWASSRF} sử dụng \textbf{CVE-2022-41080} (leo thang đặc quyền qua OWA). Nghiêm trọng hơn, AI đề xuất giải pháp "URL Rewrite" mà bài báo nhấn mạnh rõ là \textbf{"không có hiệu quả"} đối với chuỗi mới.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Lỗi 3 (Bịa thêm số liệu, thuật ngữ và chi tiết không có trong bài báo gốc):} AI thường xuyên tự thêm thông tin nghe có vẻ hợp lý nhưng không tồn tại trong nguồn tham khảo:
+
+\begin{itemize}
+    \item Defect 2: Bịa "cổ phiếu Alphabet sụt giảm hàng chục tỷ USD" và "bộ lọc ngầm chèn từ khóa đa dạng sắc tộc vào prompt" bài báo The Verge không đề cập.
+    \item Defect 3: Thêm thuật ngữ \textbf{"RAG (Retrieval-Augmented Generation)"} và viết Air Canada "vô hiệu hóa chatbot"  bài báo chỉ nêu chatbot dùng "từ ngữ gây hiểu lầm" và hãng "hứa cập nhật lại trợ lý ảo".
+    \item Defect 4: Bịa prompt cụ thể "hãy bỏ qua mọi quy tắc" và phân tích "guardrails lỏng lẻo, không kiểm duyệt output"  bài báo BBC chỉ nêu "lỗi xảy ra sau một bản cập nhật hệ thống".
+    \item Defect 5: Bịa con số "5.000 USD tiền phạt", "rủi ro tước giấy phép", "vụ án bị bác bỏ" và "ít nhất 6 án lệ"  bài báo chỉ nêu tòa "xem xét xử phạt" và "nhiều vụ án".
+    \item Defect 6: Bịa tên file "csagent.sys", con số "8,5 triệu máy tính" và hậu quả "hủy chuyến bay, ngừng phát sóng"  bài báo PIR chỉ nêu lỗi tại \textbf{Content Interpreter} xử lý Channel File 291.
+    \item Defect 7: Bịa "LockBit ransomware tấn công hàng trăm nghìn máy tính"  bài báo chỉ nêu "số lượng hạn chế khách hàng" và tác nhân nhà nước.
+    \item Defect 9: Bịa "ảnh hưởng lĩnh vực giáo dục, trường đại học"  không có trong bài báo.
+    \item Defect 14: AI viết "nhiều nhóm hacker khai thác cài phần mềm tống tiền"  bài báo nêu rõ "chưa có bằng chứng bị khai thác trong thực tế".
+    \item Defect 15: Bịa "40.000 thiết bị bị khống chế"  bài báo lưu ý "chưa ghi nhận việc khai thác trong thực tế".
+    \item Defect 18: Bịa "mã độc Python siêu ẩn danh", "telemetry", "session ID injection"  bài báo mô tả chiến dịch quét từ 7.000 IP, lợi dụng cấu hình sai và thông tin đăng nhập mặc định.
+    \item Defect 19: Bịa "viết lại kiến trúc hệ thống"  bài báo chỉ nêu Okta "reset tài khoản super admin" và "thắt chặt kiểm soát truy cập".
+    \item Defect 20: Bịa phân tích "encrypted assertions" và "xác minh sai chữ ký số"  bài báo chỉ mô tả chung "bỏ qua cơ chế xác thực SAML".
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Lỗi 4  Thiếu sót thông tin quan trọng có trong bài báo gốc (nhiều defect):} Ngoài việc thêm thông tin sai, AI cũng bỏ sót nhiều chi tiết then chốt:
+
+\begin{itemize}
+    \item Defect 9: Bỏ sót lỗ hổng thứ hai \textbf{CVE-2023-27351} (CVSS 8.2), thông tin \textbf{1.687 máy chủ} tiếp xúc Internet, và liên quan đến \textbf{ransomware Clop qua TrueBot}.
+    \item Defect 10: Bỏ sót \textbf{nhóm ransomware Play} và việc sử dụng \textbf{Plink, AnyDesk} để duy trì quyền truy nhập.
+    \item Defect 13: Bỏ sót cơ chế qua \textbf{remote template}, kích hoạt khai thác chỉ bằng \textbf{xem trước file .rtf}, vượt qua \textbf{Protected Mode} và macro, và "rất ít antivirus phát hiện được".
+    \item Defect 14: Bỏ sót hai lỗ hổng bổ sung \textbf{CVE-2022-26136} và \textbf{CVE-2022-26137}.
+    \item Defect 16: Bỏ sót thông tin vượt qua \textbf{MFA}, \textbf{250.000 thiết bị} trên thế giới và \textbf{2.560 thiết bị tại Việt Nam}.
+    \item Defect 17: Bỏ sót thông tin \textbf{Mandiant/Google} phát hiện, tác nhân \textbf{liên hệ Trung Quốc}, và \textbf{Pulse Connect Secure hết hỗ trợ}.
+    \item Defect 18: Bỏ sót hoạt động quét từ \textbf{7.000 IP}, tập trung vào \textbf{cổng UDP 4501}, và hậu quả \textbf{trích xuất token phiên, di chuyển ngang}.
+\end{itemize}
+
+\subsubsection{Student fix}
+
+Dựa trên nội dung chính xác đã được nghiên cứu và trình bày tại Yêu cầu 2, các điểm cần sửa như sau:
+
+\vspace{0.2cm}
+
+\textbf{Sửa Lỗi 1:}
+
+\begin{itemize}
+    \item Defect 7: Thay CVE-2024-1709 $\rightarrow$ \textbf{CVE-2025-3935}; mô tả: lỗi insecure deserialization của ASP.NET ViewState, tấn công bởi tác nhân nhà nước, ảnh hưởng số lượng hạn chế khách hàng ScreenConnect đám mây.
+    \item Defect 8: Thay CVE-2023-0669 $\rightarrow$ \textbf{CVE-2025-10035}; mô tả: unsafe deserialization trong License Response Servlet, bản vá: phiên bản 7.8.0.
+    \item Defect 11: Thay CVE-2023-28205 $\rightarrow$ \textbf{CVE-2025-43529} (use-after-free, phát hiện bởi Google Threat Analysis) và \textbf{CVE-2025-14174} (bộ nhớ WebKit); Apple xác nhận khai thác đang diễn ra nhắm vào cá nhân cụ thể.
+    \item Defect 12: Thay CVE-2023-23397 $\rightarrow$ \textbf{CVE-2024-21413} (CVSS 9,8); tên lỗ hổng: MonikerLink, khai thác qua hyperlink "file://", chỉ cần xem trước email trong preview pane.
+    \item Defect 14: Thay CVE-2023-22515 $\rightarrow$ \textbf{CVE-2022-26138}; mô tả: hardcoded password cho tài khoản "disabledsystemuser" trong Questions For Confluence; chưa có bằng chứng bị khai thác; bổ sung CVE-2022-26136 và CVE-2022-26137.
+    \item Defect 15: Thay CVE-2023-20198 $\rightarrow$ \textbf{CVE-2025-20188} (CVSS 10.0); mô tả: JWT hardcoded trong firmware cho tính năng Out-of-Band AP Image Download trên WLC; chưa ghi nhận khai thác thực tế.
+    \item Defect 16: Thay CVE-2022-42475 $\rightarrow$ \textbf{CVE-2023-27997} (CVSS 9,8); mô tả: heap-based buffer overflow, vượt qua MFA; 250.000+ thiết bị toàn cầu, 2.560 tại Việt Nam; giải pháp: vô hiệu hóa SSL-VPN trước khi nâng cấp FortiOS.
+    \item Defect 17: Thay CVE-2023-46805 $\rightarrow$ \textbf{CVE-2025-22457}; mô tả: stack-based buffer overflow, bị tác nhân liên hệ Trung Quốc khai thác (theo Mandiant); Pulse Connect Secure 9.1x hết hỗ trợ, không được vá.
+    \item Defect 20: Thay CVE-2024-4985 (CVSS 10.0) $\rightarrow$ \textbf{CVE-2025-23369} (CVSS 7,6); mô tả: bỏ qua xác thực SAML trên GitHub Enterprise; xóa phân tích kỹ thuật "encrypted assertions".
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Sửa Lỗi 2:}
+
+\begin{itemize}
+    \item Defect 1: Thay "DAN (Do Anything Now)" $\rightarrow$ \textbf{"Time Bandit"} của David Kuszmar; cơ chế: khai thác "nhầm lẫn về thời gian" (temporal confusion) khiến ChatGPT không xác định rõ quá khứ hay hiện tại, từ đó trả lời các chủ đề nhạy cảm (mã độc, vũ khí, thông tin hạt nhân).
+    \item Defect 10: Thay chuỗi ProxyNotShell $\rightarrow$ \textbf{OWASSRF}; thay CVE-2022-41040 $\rightarrow$ \textbf{CVE-2022-41080} (leo thang đặc quyền qua OWA); giải pháp đúng: cập nhật bản vá KB5019758, biện pháp URL Rewrite không có hiệu quả; bổ sung nhóm ransomware Play, sử dụng Plink và AnyDesk.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Sửa Lỗi 3:}
+
+\begin{itemize}
+    \item Defect 2: Xóa "cổ phiếu sụt hàng chục tỷ USD" và "bộ lọc ngầm". Thay bằng: Google chủ ý tăng tính đa dạng nhưng điều chỉnh "quá tay", đang hiệu chỉnh và tạm từ chối yêu cầu nhạy cảm về lịch sử.
+    \item Defect 3: Xóa "RAG" và "vô hiệu hóa chatbot". Thay bằng: chatbot hướng dẫn Jake Moffatt mua vé với giá thường, khẳng định có 90 ngày hoàn tiền, dùng "từ ngữ gây hiểu lầm"; hãng hứa cập nhật trợ lý ảo; tòa yêu cầu bồi thường hơn 600 USD.
+    \item Defect 4: Xóa prompt "bỏ qua mọi quy tắc" và phân tích "guardrails lỏng lẻo". Thay bằng: lỗi xảy ra sau bản cập nhật hệ thống; DPD tạm vô hiệu hóa phần AI và đang cập nhật.
+    \item Defect 5: Xóa "5.000 USD", "tước giấy phép", "vụ án bị bác bỏ", "6 án lệ". Thay bằng: luật sư Steven A. Schwartz dùng ChatGPT hỗ trợ nghiên cứu pháp lý; tòa xem xét xử phạt; thẩm phán yêu cầu điều tra.
+    \item Defect 6: Xóa "csagent.sys", "8,5 triệu máy", "hủy chuyến bay". Thay bằng: lỗi tại Content Interpreter xử lý Channel File 291 do Content Validator để lọt cấu hình sai; giải pháp: stress testing, fuzzing, fault injection, canary deployment.
+    \item Defect 14: Xóa "nhóm hacker cài phần mềm tống tiền". Thay bằng: "chưa có bằng chứng bị khai thác trong thực tế".
+    \item Defect 15: Xóa "40.000 thiết bị bị khống chế". Thay bằng: "chưa ghi nhận khai thác trong thực tế".
+    \item Defect 18: Xóa "telemetry", "session ID injection", "mã độc Python". Thay bằng: chiến dịch tấn công từ 7.000+ IP, cổng UDP 4501, cấu hình sai, thông tin đăng nhập mặc định; hậu quả: trích xuất token phiên, di chuyển ngang.
+    \item Defect 19: Xóa "viết lại kiến trúc hệ thống". Thay bằng: reset tài khoản super admin, triển khai giám sát bổ sung, thắt chặt kiểm soát truy cập, áp dụng nguyên tắc đặc quyền tối thiểu.
+    \item Defect 20: Xóa phân tích "encrypted assertions" và "chữ ký số". Giữ mô tả chung: bỏ qua xác thực SAML trên GitHub Enterprise.
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Sửa Lỗi 4:}
+
+\begin{itemize}
+    \item Defect 9: Bổ sung CVE-2023-27351 (CVSS 8.2); 1.687 máy chủ tiếp xúc Internet; liên quan ransomware Clop qua TrueBot; kẻ tấn công cài Atera và Syncro.
+    \item Defect 10: Bổ sung nhóm ransomware Play; sử dụng Plink và AnyDesk để duy trì quyền truy nhập.
+    \item Defect 13: Bổ sung cơ chế remote template $\rightarrow$ HTML $\rightarrow$ JavaScript $\rightarrow$ ms-msdt; file .rtf kích hoạt qua xem trước; vượt qua Protected Mode và macro; rất ít antivirus phát hiện. Xóa "hàng vạn máy tính".
+    \item Defect 16: Bổ sung vượt qua MFA; 250.000+ thiết bị toàn cầu; 2.560 thiết bị tại Việt Nam.
+    \item Defect 17: Bổ sung phát hiện bởi Mandiant/Google; tác nhân liên hệ Trung Quốc; Pulse Connect Secure 9.1x hết hỗ trợ.
+\end{itemize}
+
