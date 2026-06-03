@@ -642,7 +642,7 @@ Chào bạn, đối với một thiết bị gia dụng cơ điện tử như qu
 
 Dưới đây là 15 Test Cases (Kịch bản kiểm thử) bao quát toàn bộ các chức năng bạn đã mô tả và các tính năng tiêu chuẩn của một chiếc quạt đứng, được trình bày dưới dạng bảng theo đúng template bạn yêu cầu.
 
-### Bảng Kiểm Thử Quạt Đứng JIO BHL-086
+Bảng Kiểm Thử Quạt Đứng JIO BHL-086
 
 | Trạng thái / ID | Objective (Mục tiêu) | Input (Đầu vào / Điều kiện) | Steps (Các bước thực hiện) | Expected (Kết quả mong đợi) | Actual (Thực tế) | Verdict (Kết luận) |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -686,3 +686,58 @@ Các test cases được AI tạo ra đã bao quát đầy đủ các chức nă
 
 \subsubsection{Student fix}
 Không có sửa đổi nào cần thiết, vì các test cases đã được tạo ra một cách đầy đủ và chính xác theo yêu cầu.
+
+\subsection{Tóm tắt về độ chính xác của AI \& Kết luận}
+
+\subsubsection{Tỷ lệ chính xác của AI (AI Accuracy Ratio)}
+
+Dựa trên kết quả kiểm tra 3 yêu cầu sử dụng công cụ Gemini 3.1 Pro extended, tỷ lệ đánh giá như sau:
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Verdict} & \textbf{Số lượng} & \textbf{Tỷ lệ} \\
+\hline
+VALID & 1 & 33.3\% \\
+\hline
+INVALID & 2 & 66.7\% \\
+\hline
+INCOMPLETE & 0 & 0.0\% \\
+\hline
+\textbf{Tổng cộng} & \textbf{3} & \textbf{100\%} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.3cm}
+
+\begin{itemize}
+    \item \textbf{Yêu cầu 1 — Tạo sơ đồ tư duy ISTQB (INVALID):} AI sử dụng thuật ngữ cũ, giữ lại kỹ thuật đã bị loại bỏ trong ISTQB v4.0.1, và trình bày sai các hoạt động trong quy trình kiểm thử chuẩn.
+    \item \textbf{Yêu cầu 2 — Tạo 20 ví dụ lỗi phần mềm (INVALID):} AI mắc nhiều lỗi nghiêm trọng bao gồm: cung cấp sai mã định danh lỗ hổng, bịa đặt số liệu và chi tiết kỹ thuật không có trong nguồn gốc, trình bày sai sự kiện cốt lõi, và bỏ sót các thông tin quan trọng từ bài báo tham khảo.
+    \item \textbf{Yêu cầu 3 — Tạo 15 test cases cho quạt điện (VALID):} AI tạo ra các test cases bao quát đầy đủ chức năng, trình bày đúng template yêu cầu, với mục tiêu rõ ràng, đầu vào cụ thể và kết quả mong đợi hợp lý.
+\end{itemize}
+
+\subsubsection{Kết luận: Khi nào NÊN và KHÔNG NÊN sử dụng AI}
+
+\textbf{NÊN sử dụng AI khi:}
+
+\begin{itemize}
+    \item \textbf{Tạo template, cấu trúc và khung công việc:} AI hiệu quả khi sinh ra các bản mẫu có cấu trúc rõ ràng như test cases, checklist, hoặc bảng biểu theo format cho trước. Đây là các tác vụ mang tính khuôn mẫu, không yêu cầu tra cứu dữ liệu cụ thể.
+    \item \textbf{Brainstorming và phác thảo ý tưởng ban đầu:} AI có thể hỗ trợ liệt kê nhanh các hạng mục cần kiểm thử, các kịch bản sử dụng, hoặc các khía cạnh cần xem xét giúp tiết kiệm thời gian ở giai đoạn đầu.
+    \item \textbf{Các tác vụ logic, không phụ thuộc dữ liệu thực tế theo thời gian:} Khi đầu ra chỉ dựa trên suy luận logic và kiến thức phổ quát AI cho kết quả đáng tin cậy.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{KHÔNG NÊN sử dụng AI (hoặc phải kiểm chứng kỹ lưỡng) khi:}
+
+\begin{itemize}
+    \item \textbf{Tra cứu dữ liệu chính xác và cập nhật:} AI thường xuyên bịa đặt mã CVE, số liệu thống kê, và chi tiết kỹ thuật không tồn tại trong nguồn gốc. Đây là biểu hiện điển hình của hiện tượng \textbf{ảo giác (hallucination)}.
+    \item \textbf{Tham chiếu tài liệu chuyên ngành có phiên bản cụ thể:} AI không phân biệt được các phiên bản cũ và mới của tài liệu tiêu chuẩn, dẫn đến sử dụng thuật ngữ lỗi thời và nội dung đã bị loại bỏ.
+    \item \textbf{Mô tả sự kiện thực tế và trích dẫn nguồn:} AI có xu hướng \textbf{thêm thông tin nghe có vẻ hợp lý nhưng hoàn toàn bịa đặt}, đặc biệt nguy hiểm trong bối cảnh học thuật và pháp lý.
+    \item \textbf{Các tác vụ yêu cầu độ chính xác tuyệt đối:} Bất kỳ công việc nào mà sai sót có thể gây hậu quả nghiêm trọng (nộp hồ sơ pháp lý, báo cáo bảo mật, tài liệu kỹ thuật chính thức) đều \textbf{không nên} giao hoàn toàn cho AI mà không có bước kiểm chứng chéo của con người.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Khuyến nghị chung:} AI nên được sử dụng như một \textbf{công cụ hỗ trợ khởi tạo}, không phải một \textbf{nguồn thông tin đáng tin cậy}. Mọi đầu ra của AI, đặc biệt là dữ liệu, số liệu, mã định danh và trích dẫn \textbf{bắt buộc phải được con người kiểm chứng} trước khi sử dụng trong bất kỳ tài liệu chính thức nào.
