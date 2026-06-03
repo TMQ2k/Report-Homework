@@ -137,21 +137,21 @@ TC-15
 & Quạt dừng hoàn toàn khi rút điện. Khi cắm lại, (tùy thiết kế cơ/điện tử) quạt giữ nguyên trạng thái bật hoặc về trạng thái chờ an toàn.
 & Quạt dừng hoàn toàn, không còn quay.
 & PASSED \\
-TC-16
+TC-16 (edge case)
 & Kiểm tra vết đứt hoặc hở tại dây điện hoặc phích cắm bị cháy đầu nhận điện sau khoảng thời gian dài sử dụng.
 & Quạt đang ở trạng thái tắt.
 & 1. Kiểm tra các điểm trên dây điện và tìm các vết nứt, đứt hoặc hở. \newline 2. Kiểm tra phích cắm có bị cháy đầu dẫn điện hay không.
 & Dây điện không có vết nứt, đứt hoặc hở. Phích cắm không bị cháy đầu dẫn điện, vẫn đảm bảo tiếp xúc tốt.
 & Dây điện không có vết nứt, đứt hoặc hở. Phích cắm không bị cháy đầu dẫn điện, vẫn đảm bảo tiếp xúc tốt.
 & PASSED \\
-TC-17
+TC-17 (edge case)
 & Kiểm tra quạt hoạt động bình thường khi nhấn 2 mức gió cùng lúc.
 & Quạt đang ở trạng thái tắt.
 & 1. Bấm đồng thời nút chọn mức gió 1 (Thấp) và mức gió 2 (Trung bình).
 & Quạt chỉ nhận một tín hiệu mức gió (thường là mức gió cao hơn nếu thiết kế có ưu tiên) và hoạt động ở mức đó, không bị chập chờn.
 & Quạt chạy khi nhấn giữ đồng thời 2 mức gió với mức ưu tiên lớn hơn tuy nhiên lại tắt khi nhả nút, không hoạt động ổn định.
 & FAILED \\
-TC-18
+TC-18 (edge case)
 & Kiểm tra trục giữ cánh quạt bị cứng sau một thời gian dài sử dụng.
 & Quạt đã được sử dụng nhiều năm và đang ở trạng thái tắt.
 & 1. Tháo khung lồng quạt và cánh quạt để tiếp cận trục giữ cánh quạt. \newline 2. Dùng tay quay nhẹ cánh quạt theo cả hai chiều.
