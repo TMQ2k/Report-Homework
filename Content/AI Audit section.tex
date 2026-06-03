@@ -606,3 +606,83 @@ Dựa trên nội dung chính xác đã được nghiên cứu và trình bày t
     \item Defect 17: Bổ sung phát hiện bởi Mandiant/Google; tác nhân liên hệ Trung Quốc; Pulse Connect Secure 9.1x hết hỗ trợ.
 \end{itemize}
 
+\subsection{Yêu cầu AI tạo ra 15 test cases cho thiết bị quạt}
+
+\subsubsection{Prompt + Tool}
+
+\textbf{Tool:} Gemini 3.1 Pro extended
+
+\textbf{Prompt:}
+Tôi có một thiết bị điện tử với thông số như sau: 
+\vspace{0.1cm}
+
+- Loại thiết bị: Quạt điện tử đứng 
+\vspace{0.1cm}
+
+- Hãng sản xuất: JIO 
+\vspace{0.1cm}
+
+- Mẫu mã: BHL-086 
+\vspace{0.1cm}
+
+- Năm sản xuất: khoảng 2010 
+\vspace{0.1cm}
+
+- Số seri: unknow. 
+\vspace{0.1cm}
+
+Quạt có các chưng năng cơ bản như: nút bấm sau cánh quạt để tự động chỉnh / đứng yên hướng gió ngang, tăng giảm mức gió , hẹn thời gian tự động tắt quạt. Hãy tạo giúp tôi 15 test cases để kiểm tra thiết bị. Chú ý trình bày theo template sau:  (Objective / Input / Steps / Expected / Actual / Verdict).
+
+\vspace{0.1cm}
+
+\textbf{Thời gian đã thực hiện:} 
+
+\subsubsection{AI Output}:
+Chào bạn, đối với một thiết bị gia dụng cơ điện tử như quạt đứng JIO BHL-086, việc kiểm thử (testing) sẽ tập trung vào cả phần cơ năng (thay đổi độ cao, góc gập) và phần điện tử (hẹn giờ, các mức gió, tuốc năng).
+
+Dưới đây là 15 Test Cases (Kịch bản kiểm thử) bao quát toàn bộ các chức năng bạn đã mô tả và các tính năng tiêu chuẩn của một chiếc quạt đứng, được trình bày dưới dạng bảng theo đúng template bạn yêu cầu.
+
+### Bảng Kiểm Thử Quạt Đứng JIO BHL-086
+
+| Trạng thái / ID | Objective (Mục tiêu) | Input (Đầu vào / Điều kiện) | Steps (Các bước thực hiện) | Expected (Kết quả mong đợi) | Actual (Thực tế) | Verdict (Kết luận) |
+| --- | --- | --- | --- | --- | --- | --- |
+| **TC-01** | Kiểm tra chức năng khởi động quạt. | Quạt được cắm nguồn điện 220V, đang ở trạng thái Tắt. | 1. Bấm nút nguồn hoặc nút chọn mức gió thấp nhất (Mức 1). | Quạt bắt đầu hoạt động, cánh quạt quay đều, không có tiếng kêu lạ. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-02** | Kiểm tra chức năng tắt quạt. | Quạt đang hoạt động ở mức gió bất kỳ. | 1. Bấm nút Tắt (Off). | Quạt ngắt điện ngay lập tức, cánh quạt giảm tốc rồi dừng hẳn. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-03** | Kiểm tra chức năng tăng mức gió (Mức trung bình). | Quạt đang chạy ở mức gió 1 (Thấp). | 1. Bấm nút chọn mức gió 2 (Trung bình). | Tốc độ vòng quay của cánh quạt tăng lên rõ rệt, luồng gió mạnh hơn. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-04** | Kiểm tra chức năng tăng mức gió (Mức cao nhất). | Quạt đang chạy ở mức gió 2 (Trung bình). | 1. Bấm nút chọn mức gió 3 (Cao nhất). | Tốc độ cánh quạt quay ở mức tối đa, động cơ không có mùi khét. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-05** | Kiểm tra chuyển đổi mức gió từ Cao về Thấp. | Quạt đang chạy ở mức gió 3 (Cao nhất). | 1. Bấm trực tiếp nút chọn mức gió 1 (Thấp). | Quạt nhận tín hiệu ngay, tốc độ vòng quay giảm dần xuống mức thấp. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-06** | Kiểm tra chức năng xoay ngang (Tuốc năng). | Quạt đang chạy, lồng quạt đứng yên. | 1. Nhấn (hoặc gạt) nút bấm phía sau motor quạt. | Bầu quạt bắt đầu tự động xoay chuyển hướng gió sang trái và phải đều đặn. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-07** | Kiểm tra chức năng dừng xoay ngang. | Quạt đang chạy và đang xoay ngang đều đặn. | 1. Rút (hoặc gạt ngược lại) nút bấm phía sau motor quạt. | Bầu quạt lập tức dừng xoay và giữ nguyên hướng gió tại thời điểm tác động. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-08** | Kiểm tra chức năng hẹn giờ tắt (Mức thời gian tối thiểu). | Quạt đang chạy. | 1. Vặn/Bấm núm hẹn giờ đến mức thấp nhất (VD: 30 phút).<br>
+
+<br>2. Dùng đồng hồ bấm giờ để theo dõi. | Đúng sau thời gian đã hẹn (khoảng 30 phút), quạt tự động ngắt điện và dừng hoạt động. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-09** | Kiểm tra chức năng hẹn giờ tắt (Mức thời gian tối đa). | Quạt đang chạy. | 1. Vặn/Bấm núm hẹn giờ đến mức tối đa (VD: 2 giờ hoặc 4 giờ).<br>
+
+<br>2. Theo dõi cho đến khi hết giờ. | Quạt hoạt động liên tục và tự động ngắt điện đúng vào thời điểm hết giờ đã hẹn. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-10** | Kiểm tra hủy chức năng hẹn giờ. | Quạt đang chạy và đang được cài đặt hẹn giờ tắt (VD: 60 phút). | 1. Vặn/Bấm núm hẹn giờ về vị trí 0 (hoặc Off). | Quạt tiếp tục chạy bình thường ở chế độ thủ công, không bị tắt đột ngột. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-11** | Kiểm tra thay đổi độ cao của thân quạt. | Quạt được đặt trên mặt phẳng, ngắt điện. | 1. Vặn lỏng chốt thân quạt.<br>
+
+<br>2. Rút thân quạt lên cao hoặc hạ thấp.<br>
+
+<br>3. Vặn chặt chốt lại. | Thân quạt di chuyển trơn tru, chốt giữ chắc chắn không bị tuột độ cao khi quạt chạy. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-12** | Kiểm tra điều chỉnh góc gập cổ quạt (Lên/Xuống). | Quạt đặt trên mặt phẳng, ngắt điện. | 1. Dùng tay điều chỉnh lồng quạt gập xuống dưới hoặc ngẩng lên trên. | Cổ quạt thay đổi góc độ theo từng nấc (hoặc trơn), giữ cố định tốt ở góc mới. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-13** | Kiểm tra độ rung lắc khi hoạt động ở công suất tối đa. | Quạt đang chạy ở mức gió cao nhất và xoay ngang. | 1. Quan sát phần chân đế và thân quạt trên nền phẳng. | Quạt đứng vững, không bị rung lắc mạnh, không bị tự xê dịch khỏi vị trí ban đầu. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-14** | Kiểm tra khả năng chịu tải liên tục (Endurance Test). | Quạt cắm điện 220V. | 1. Bật quạt ở mức gió 2 kèm xoay ngang.<br>
+
+<br>2. Để quạt chạy liên tục trong 4-6 tiếng. | Quạt không bị tắt giữa chừng, sờ vào bầu motor chỉ ấm nhẹ, không quá nhiệt, không khét. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+| **TC-15** | Kiểm tra hành vi khi mất điện đột ngột. | Quạt đang hoạt động bình thường. | 1. Rút phích cắm điện (mô phỏng mất điện).<br>
+
+<br>2. Đợi 10 giây và cắm phích lại. | Quạt dừng hoàn toàn khi rút điện. Khi cắm lại, (tùy thiết kế cơ/điện tử) quạt giữ nguyên trạng thái bật hoặc về trạng thái chờ an toàn. | *(Ghi nhận khi test)* | *(Pass/Fail)* |
+
+*Lưu ý: Ở hai cột **Actual** (Thực tế) và **Verdict** (Kết luận), bạn hãy để trống khi lên kế hoạch và chỉ điền vào (Pass: Đạt / Fail: Không đạt) trong quá trình trực tiếp thao tác trên thiết bị.*
+
+\vspace{0.1cm}
+
+\subsubsection{Verdict}
+VALID
+
+\subsubsection{Reasoning}
+Các test cases được AI tạo ra đã bao quát đầy đủ các chức năng cơ bản của một chiếc quạt đứng điện tử, bao gồm cả phần cơ năng (điều chỉnh độ cao, góc gập) và phần điện tử (mức gió, hẹn giờ, tuốc năng). Mỗi test case đều có mục tiêu rõ ràng, đầu vào cụ thể, các bước thực hiện chi tiết, kết quả mong đợi hợp lý và có chỗ để ghi nhận kết quả thực tế cũng như đánh giá cuối cùng. Các test cases cũng được trình bày theo đúng template yêu cầu, giúp dễ dàng theo dõi và thực hiện khi kiểm thử thực tế trên thiết bị. Do đó, tôi đánh giá kết quả là VALID.
+
+\subsubsection{Student fix}
+Không có sửa đổi nào cần thiết, vì các test cases đã được tạo ra một cách đầy đủ và chính xác theo yêu cầu.
